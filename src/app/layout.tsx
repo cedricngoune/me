@@ -15,8 +15,8 @@ const poppins = Poppins({
   display: "swap",
 });
 const description = [
-  "I'm interested in building web scalable app and learning days on days.",
-  "I also interested about dealing with devOps tools like Docker, K8s, and Cloud as Aws prospector",
+  "I'm interested about building scalable web applications.",
+  "I also interested about infrastructure as a code and devOps environment.",
 ];
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={` ${poppins.variable} antialiased`}>
+    <html lang="en" className={`${poppins.variable} antialiased`}>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className="font-sans antialiased bg-background text-foreground">
         {children}

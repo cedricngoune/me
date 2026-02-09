@@ -3,35 +3,34 @@ import { Button } from "@/src/components/ui/button";
 import { X, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [
+    { href: "#projects", label: "Projects" },
+    { href: "#tools", label: "Tools" },
     { href: "#about", label: "About me" },
-    { href: "#skills", label: "My Skills" },
-    { href: "#works", label: "Works" },
   ];
   return (
-    <header className="fixed bg-background/80 backdrop-blur-md border-b border-border top-0 left-0 right-0 z-50 font-poppins">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed bg-background/80 backdrop-blur-md border-b border-border top-0 left-0 right-0 z-50">
+      <div className="mx-10 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="shrink-0">
             <Link
               href="/"
               className="text-xl font-bold text-black hover:text-shadow-white"
             >
-              <Image src="/logo.jpg" alt="logo CN" width={100} height={100} />
+              Cédric<span className="text-[#85a9cc]">.</span>
             </Link>
           </div>
 
           <nav className="hidden md:block">
-            <div className="flex items-center space-x-8 ">
+            <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-[#1b1c36] font-sans hover:text-[#0d0d20] transition-colors font-medium"
+                  className="text-gray-600 hover:text-[#85a9cc] transition-colors font-semibold"
                 >
                   {item.label}
                 </a>

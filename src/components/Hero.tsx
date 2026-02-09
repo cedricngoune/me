@@ -1,82 +1,53 @@
 "use client";
-import { ArrowDown } from "lucide-react";
+import { SendIcon } from "lucide-react";
 import Image from "next/image";
 
 import { Button } from "./ui/button";
-import { LinkedinIcon } from "./icons/linkedin";
-import { GithubIcon } from "./icons/github";
 
 export const Hero = () => {
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   return (
-    <section className="pt-60 pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-4xl text-center">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          <div className="shrink-0">
-            <div className="lg:w-80 lg:h-80 rounded-full  p-2 flex items-center justify-center">
+    <section className="pt-40 pb-60 mx-10 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-items-center lg:justify-items-center gap-8 lg:gap-2">
+          <div className="flex justify-center lg:justify-center lg:items-center w-full">
+            <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full">
               <Image
                 src="/cedric.jpeg"
-                alt="Cédric NGOUNÉ"
+                alt="Cédric"
                 className="rounded-full object-cover"
-                width={320}
-                height={320}
+                width={400}
+                height={400}
               />
             </div>
           </div>
-          <div className="flex-10 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold  mb-4">
-              Hi, I&apos;m <span className="text-primary">Cédric NGOUNÉ</span>
+
+          <div className="text-center lg:text-left w-full">
+            <h3 className="text-lg sm:text-xl lg:text-xl text-muted-foreground font-semibold mb-2">
+              Hey, I&apos;m Cédric 👋🏾
+            </h3>
+            <h1 className="font-extrabold mb-4 lg:mb-6">
+              <span className="text-5xl sm:text-6xl lg:text-8xl text-[#85a9cc] block">
+                Fullstack
+              </span>
+              <span className="text-5xl sm:text-6xl lg:text-8xl block">
+                Developer
+              </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-muted-foreground font-semibold mb-6">
-              Fullstack developer, craft enthusiast
-            </p>
-            <p className="text-lg text-foreground max-w-2xl mx-auto font-light mt-8">
-              I love building web applications that serve companies, customers
-              and the world
+            <p className="text-base sm:text-lg lg:text-xl text-foreground font-light mt-4">
+              I&apos;m a fullstack developer based in paris who love building
+              <br className="hidden sm:block" />
+              web applications at Companies level.
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Button variant="outline" asChild>
-                <a href="mailto:gabyngoune@yahoo.fr">Get In Touch</a>
-              </Button>
-            </div>
-
-            <div className="mt-16 text-left">
+            <div className="mt-8 flex justify-center lg:justify-start">
               <Button
-                variant="ghost"
-                size="lg"
-                onClick={scrollToAbout}
-                className="bg-white hover:bg-white border-none cursor-pointer transition-colors animate-bounce"
+                className="cursor-pointer hover:bg-white"
+                variant="outline"
               >
-                <ArrowDown className="h-5 w-5" />
-                <span className="text-lg font-medium">Scroll down</span>
+                <a href="mailto:gabyngoune@yahoo.fr">Get In Touch</a>
+                <SendIcon className="ml-2" />
               </Button>
             </div>
-          </div>
-          <div className="flex flex-col space-y-4 mb-12">
-            <a
-              href="https://www.linkedin.com/in/c%C3%A9dric-ngoun%C3%A9-4105bb172/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <LinkedinIcon height={24} width={24} />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-            <a
-              href="https://github.com/cedricngoune/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <GithubIcon height={24} width={24} />
-              <span className="sr-only">GitHub</span>
-            </a>
           </div>
         </div>
       </div>

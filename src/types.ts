@@ -4,19 +4,11 @@ export type IconProps = {
   title?: string;
 };
 
-export type BlogPost = {
-  featureImage: string;
-  title: string;
-  url: string;
-  uuid: string;
-  publishedAt: string;
-  plaintext: string;
-  tags: string[];
-};
-
 export type GithubProject = {
-  repoName: string;
+  name: string;
   description: string;
   url: string;
-  stars: number;
+  createdAt: string;
+  image?: string;
+  tags?: string[];
 };
