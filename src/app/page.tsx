@@ -1,12 +1,12 @@
 import { Effects } from "@/src/components/effects";
 import { Footer } from "@/src/components/footer";
-import { Header } from "@/src/components/header";
 import { About } from "@/src/components/sections/about";
 import { Contact } from "@/src/components/sections/contact";
 import { Hero } from "@/src/components/sections/hero";
 import { Projects } from "@/src/components/sections/projects";
 import { Services } from "@/src/components/sections/services";
 import { Stack } from "@/src/components/sections/stack";
+import { Header } from "../components/header";
 
 export default function Home() {
   return (

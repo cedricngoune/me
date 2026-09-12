@@ -1,14 +1,14 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { sections, site } from "@/src/content/site";
 
-export function Footer() {
+export const Footer = () => {
   return (
     <footer className="border-t border-bord bg-surface">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[2fr_1fr_1fr]">
         <div>
           <p className="flex items-center gap-2.5 font-avenir font-bold tracking-tight">
             <span className="degrade-marque grid h-9 w-9 place-items-center rounded-xl text-xs text-white">
-              {site.initiales}
+              {site.initial}
             </span>
             {site.fullname}
           </p>
@@ -75,11 +75,11 @@ export function Footer() {
       <div className="border-t border-bord">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-5 py-5 font-roboto text-xs text-encre-douce sm:px-8">
           <span>
-            {site.fullname} — {site.lieu}
+            {site.fullname} — {site.location}
           </span>
           <span>© {new Date().getFullYear()} Tous droits réservés.</span>
         </div>
       </div>
     </footer>
   );
-}
+};
