@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* Le thème sombre est piloté par l'attribut data-theme sur <html>. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------------------------------------------------------------------
+   Jetons de couleur — thème clair
+   ------------------------------------------------------------------ */
+
+:root {
+  --fond: #f7f5fd;
+  --surface: #ffffff;
+  --surface-2: #f1ecfb;
+  --encre: #1a1233;
+  --encre-douce: #5a5384;
+  --bord: #e6dff8;
+  --bord-fort: #d2c6f1;
+
+  --brand: #4d2fb2;
+  --brand-clair: #6b46c1;
+  --brand-vif: #8b5cf6;
+
+  --halo: rgba(77, 47, 178, 0.22);
+  --ombre: 0 1px 2px rgba(26, 18, 51, 0.04), 0 16px 40px -20px rgba(26, 18, 51, 0.24);
+  --ombre-haute: 0 2px 6px rgba(26, 18, 51, 0.06), 0 32px 64px -28px rgba(77, 47, 178, 0.4);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --fond: #100a24;
+  --surface: #1a1038;
+  --surface-2: #23174e;
+  --encre: #f2eefc;
+  --encre-douce: #a79fd0;
+  --bord: #2d1f61;
+  --bord-fort: #3d2b80;
+
+  --brand: #8b5cf6;
+  --brand-clair: #a78bfa;
+  --brand-vif: #c4b5fd;
+
+  --halo: rgba(139, 92, 246, 0.3);
+  --ombre: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -20px rgba(0, 0, 0, 0.7);
+  --ombre-haute: 0 2px 6px rgba(0, 0, 0, 0.5), 0 32px 64px -28px rgba(0, 0, 0, 0.8);
+
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------------
+   Exposition à Tailwind
+   ------------------------------------------------------------------ */
+
+@theme inline {
+  --color-fond: var(--fond);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-encre: var(--encre);
+  --color-encre-douce: var(--encre-douce);
+  --color-bord: var(--bord);
+  --color-bord-fort: var(--bord-fort);
+  --color-brand: var(--brand);
+  --color-brand-clair: var(--brand-clair);
+  --color-brand-vif: var(--brand-vif);
+
+  --font-sans: var(--font-avenir), var(--font-roboto), system-ui, sans-serif;
+  --font-avenir: var(--font-avenir), system-ui, sans-serif;
+  --font-roboto: var(--font-roboto), system-ui, sans-serif;
+
+  --shadow-carte: var(--ombre);
+  --shadow-haute: var(--ombre-haute);
+
+  --ease-sortie: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  background: var(--fond);
+}
+
+body {
+  background: var(--fond);
+  color: var(--encre);
+  min-height: 100vh;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  transition: background-color 320ms ease, color 320ms ease;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------
+   Le dégradé signature, décliné du violet de la marque
+   ------------------------------------------------------------------ */
+
+.degrade-marque {
+  background-image: linear-gradient(135deg, #4d2fb2 0%, #6b46c1 48%, #8b5cf6 100%);
+}
+
+.texte-marque {
+  background-image: linear-gradient(120deg, var(--brand) 0%, var(--brand-vif) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.trame-points {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Halos d'arrière-plan ------------------------------------------------ */
+
+.halo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  background: radial-gradient(circle, var(--halo), transparent 70%);
+  pointer-events: none;
+  animation: derive 26s ease-in-out infinite alternate;
+}
+
+@keyframes derive {
+  to {
+    transform: translate3d(-3rem, 2.5rem, 0) scale(1.15);
+  }
+}
+
+/* Pastille de disponibilité ------------------------------------------ */
+
+.onde::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  animation: pulsation 2.6s ease-out infinite;
+}
+
+@keyframes pulsation {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.6);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Apparitions au défilement
+   ------------------------------------------------------------------ */
+
+.js [data-apparition] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.js [data-apparition].vu {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 680ms var(--ease-sortie),
+    transform 680ms var(--ease-sortie);
+  transition-delay: var(--delai, 0ms);
+}
+
+/* Levée des lignes du titre ------------------------------------------ */
+
+.masque {
+  display: block;
+  overflow: hidden;
+}
+
+.masque > span {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 900ms var(--ease-sortie);
+  transition-delay: var(--delai, 0ms);
+}
+
+.js .pret .masque > span,
+html:not(.js) .masque > span {
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------
+   Accessibilité : on coupe tout si le système le demande
+   ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js [data-apparition] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .masque > span {
+    transform: none !important;
+  }
+
+  .halo,
+  .onde::after {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
