@@ -37,7 +37,7 @@ export function About() {
             {site.formations.map((formation) => (
               <li key={formation.description} className="relative">
                 <span
-                  className="absolute -left-[1.6rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-brand bg-surface"
+                  className="absolute left-[-1.6rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-brand bg-surface"
                   aria-hidden="true"
                 />
                 <p className="font-roboto text-xs text-encre-douce">

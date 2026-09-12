@@ -14,7 +14,7 @@ export function Hero() {
         aria-hidden="true"
       />
       <div
-        className="halo -right-40 -top-40 h-[34rem] w-[34rem] opacity-60"
+        className="halo -right-40 -top-40 h-136 w-136 opacity-60"
         style={{ ["--halo" as string]: "rgba(255,255,255,.35)" }}
         aria-hidden="true"
       />
