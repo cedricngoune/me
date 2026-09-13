@@ -6,7 +6,7 @@ import { Hero } from "@/src/components/sections/hero";
 import { Projects } from "@/src/components/sections/projects";
 import { Services } from "@/src/components/sections/services";
 import { Stack } from "@/src/components/sections/stack";
-import { Header } from "@/src/components/header";
+import { Header } from "@/src/components/Header";
 
 export default function Home() {
   return (
